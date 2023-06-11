@@ -31,7 +31,7 @@ function startAudio() {
   const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
   // audio.src = 'mohgLordOfBlood.wav'
-  audio.src = 'futureGirlfriend.wav'
+  audio.src = './challenge1/futureGirlfriend.wav'
 
   // --------------------------------------------------------
   // Create an audio analyser
