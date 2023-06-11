@@ -19,8 +19,8 @@ let colour;
 let currentIndex = 0;
 
 // Blobs variables, bot being used right now
-let startBlobs = true;
-let blobs = [];
+// let startBlobs = true;
+// let blobs = [];
 
 // Audio variables
 let analyser;
@@ -63,6 +63,13 @@ function render() {
   
   analyser.getByteFrequencyData(frequencyArray);
 
+  // if (startBlobs) {
+  //   generateBlob(20);
+  //   startBlobs = false;
+  // };
+  
+  // updateBlobs();
+
   frequencyArray.forEach((f, i) => {
     const barLength = frequencyArray[i] * 0.5;
     const x1 = (Math.cos(step * i) * radius) + centerX;
@@ -77,33 +84,26 @@ function render() {
     ctx.stroke();
   })
   
-  // if (startBlobs) {
-  //   generateBlob(20);
-  //   startBlobs = false;
-  // };
-
   colourCentre(frequencyArray);
-  // updateBlobs();
   requestAnimationFrame(render);
 }
 
-function generateBlob(num) {
-  for (let i = 0; i < num; i++) {
-    frequencySelection = Math.floor(Math.random() * frequencyArray.length);
-    const blobSize = mapRange(frequencySelection, 0, frequencyArray.length, 10, 100);
-    // Map frequency to blob speed
-    const blobSpeed = mapRange(frequencySelection, 0, frequencyArray.length, 1, 10);
-    // Map frequency to blob x position
-    const blobX = Math.random() * canvas.width;
+// function generateBlob(num) {
+//   for (let i = 0; i < num; i++) {
+//     frequencySelection = Math.floor(Math.random() * frequencyArray.length);
+//     const blobSize = mapRange(frequencySelection, 0, frequencyArray.length, 10, 100);
+//     // Map frequency to blob speed
+//     const blobSpeed = mapRange(frequencySelection, 0, frequencyArray.length, 1, 10);
+//     // Map frequency to blob x position
+//     const blobX = Math.random() * canvas.width;
 
-    blobs.push({ x: blobX, y: -blobSize, size: blobSize / 2, speed: blobSpeed / 30 });
-  }
-}
+//     blobs.push({ x: blobX, y: -blobSize, size: blobSize / 2, speed: blobSpeed / 30 });
+//   }
+// }
 
 function colourCentre(frequencyArray) {
   ctx.beginPath();
   ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
-  // const hue = Math.floor(Math.random() * colourArray.length);
   const hue = currentIndex % colourArray.length;
    
 
@@ -121,10 +121,10 @@ function colourCentre(frequencyArray) {
 
   if (isBassDrumKick) {
     if (drumSpeed === 0) {
-        // Use the current index instead of generating a random index
         colour = colourArray[hue];
         ctx.fillStyle = colour;
         ctx.fill();
+        ctx.save();
         drumSpeed += 1;
         isBassDrumKick = false;
       } else {
@@ -140,24 +140,24 @@ function colourCentre(frequencyArray) {
   }
 }
 
-function updateBlobs() {
-  const totalBlobs = blobs.length;
-  blobs = blobs.filter(blob => blob.y <= canvas.height);
-  const newTotalBlobs = blobs.length;
-  const numBlobs = totalBlobs - newTotalBlobs;
-  generateBlob(numBlobs);
-    blobs.forEach(blob => {
-      blob.y += blob.speed;
-      ctx.beginPath();
-      ctx.arc(blob.x, blob.y, blob.size, 0, 2 * Math.PI);
-      ctx.fillStyle = `hsl(${blob.y % 360}, 100%, 50%)`;
-      ctx.fill();
-    });
-}
+// function updateBlobs() {
+//   const totalBlobs = blobs.length;
+//   blobs = blobs.filter(blob => blob.y <= canvas.height);
+//   const newTotalBlobs = blobs.length;
+//   const numBlobs = totalBlobs - newTotalBlobs;
+//   generateBlob(numBlobs);
+//     blobs.forEach(blob => {
+//       blob.y += blob.speed;
+//       ctx.beginPath();
+//       ctx.arc(blob.x, blob.y, blob.size, 0, 2 * Math.PI);
+//       ctx.fillStyle = `hsl(${blob.y % 360}, 100%, 50%)`;
+//       ctx.fill();
+//     });
+// }
 
-function mapRange(value, inMin, inMax, outMin, outMax) {
-  return (value - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
-}
+// function mapRange(value, inMin, inMax, outMin, outMax) {
+//   return (value - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+// }
 
 playButton.addEventListener('click', (e) => {
   startAudio();
