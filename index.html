@@ -6,15 +6,53 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="./challenge1/style.css" />
+  <link rel="stylesheet" href="./challenge2/style.css" />
 </head>
 
 <body>
+  <!-- Challenge 1 -->
+  <!-- <canvas id="canvas" width="400" height="400"></canvas>
+  <button id="button-play">Play</button> -->
+  <!-- Challenge 1 end -->
 
-  <canvas id="canvas" width="400" height="400"></canvas>
-  <button id="button-play">Play</button>
-
-  <script src="./challenge1/script.js"></script>
+  <!-- Challenge 2 -->
+  <div id="challenge2">
+  <div class="tenor-gif-embed" data-postid="25773540" data-share-method="host" data-aspect-ratio="0.8375" data-width="10%"><a href="https://tenor.com/view/magical-girl-madoka-magica-dance-gif-25773540">Magical Girl Madoka Magica GIF</a>from <a href="https://tenor.com/search/magical+girl-gifs">Magical Girl GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+  <form action="" method="post" id="form">
+    <label for="filterType">Filter Type</label>
+    <select name="filterType" id="filterType">
+      <option value="Episodes">Episodes</option>
+      <option value="Rank">Rank</option>
+    </select>
+    <label for="filterValue">Filter Value</label>
+    <input type="number" name="filterValue" id="filterValue" value="1">
+    <label for="filterOperator">Filter Operator</label>
+    <select name="filterOperator" id="filterOperator">
+      <option value=">=">Greater or Equal</option>
+      <option value=">">Greater</option>
+      <option value="=">Equal</option>
+      <option value="<">Less</option>
+      <option value="<=">Less or Equal</option>
+    </select>
+    <label for="sortType">Sort Type</label>
+    <select name="sortType" id="sortType">
+      <option value="Rank">Rank</option>
+      <option value="Popularity">Popularity</option>
+    </select>
+    <label for="sliceAmount">Slice Amount</label>
+    <input type="number" name="sliceAmount" id="sliceAmount" value="20">
+    <input type="submit" value="Submit">
+  </form>
+</div>
+  <!-- Challenge 2 end -->
+  
+  <!-- Challenge 3 -->
+  
+  <!-- Challenge 3 end -->
+  
+  <div id="my_dataviz"></div>
+  <script src="https://d3js.org/d3.v6.js"></script>
+  <script src="./challenge2/script.js"></script>
 </body>
 
 </html>
