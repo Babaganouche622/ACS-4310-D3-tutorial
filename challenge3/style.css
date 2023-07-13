@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #FAEDDA;
+  /* display: flex; */
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h1 {
+  font-size: 3rem;
+  margin: 20px 0;
+  color:  #a0a5ec;
+}
+
+button {
+  font-size: 1.5rem;
+  margin: 20px 0;
+  border: #333 1px solid;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+#visualize {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #eecef5; */
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  padding: 0 20px;
+  width: 100%;
+}
+
+canvas {
+  background: white;
+  position: absolute;
+  z-index: -1;
+  /* border: 20px solid rgb(255, 48, 224); */
+  box-shadow: 0 0 0 20px #F62E97;
+  border-radius: 1000px;
+  margin-top: 100px;
+}
+
+
+#spotifyPlayer {
+  display: flex;
+  flex-direction: row;
+  height: 352px;
+}
+
+#my_dataviz2 {
+  width: 100%;
+  margin: 40px;
+  overflow-x: auto;
+}
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Header styles */
+thead th {
+  background-color: #f2f2f2;
+}
+
+/* Alternate row styles */
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* add cell borders */
+td {
+  border: 1px solid #ddd;
+}
